@@ -5,3 +5,17 @@ variables:
   SAST_EXCLUDED_PATHS: "frontend/src/assets/private/**"
   TEST_DISABLED: "true"
   DAST_DISABLED: "true"
+
+stages:
+  - build
+  - test
+  - staging-test
+  - deploy
+
+staging_test:
+  stage: staging-test
+  script:
+    - echo "Running security checks on the staging environment..."
+    - # Add your security testing commands here
+  only:
+    - staging
